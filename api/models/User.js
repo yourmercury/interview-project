@@ -72,5 +72,9 @@ module.exports = {
     return {user, status: true, token};
   },
 
+  getEmail: async function (email) {
+    return await User.findOne({ email: email });
+  }
+
 };
 

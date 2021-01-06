@@ -8,18 +8,16 @@
  */
 
 const jwt = require('jsonwebtoken');
+const User = require('../models/User');
 
 const checkCookie = function (req, res) {
     let status = null
-    jwt.verify(req.cookies.jwt, process.env.JWT_SECRET || sails.config.jwtSecret, async function (err, decodedToken) {
-        if (err) {
-            status = false
-        } else {
-            status = true;
-        }
-    })
-
-    return status
+    status = jwt.verify(req.cookies.jwt, process.env.JWT_SECRET || sails.config.jwtSecret);
+    if (!status) {
+        return false
+    } else {
+        return true
+    }
 }
 
 module.exports = {
@@ -28,6 +26,7 @@ module.exports = {
         if (!status) {
             res.json({ error: "you are not logged in" });
         }
+
         Order.createOrder(req.body)
             .then(order => {
                 res.status(200).json(order);
@@ -41,6 +40,8 @@ module.exports = {
         if (!status) {
             res.json({ error: "you are not logged in" });
         }
+
+        //console.log(status)
         Order.getOrders(req.body.id)
             .then(order => {
                 res.status(200).json(order);
