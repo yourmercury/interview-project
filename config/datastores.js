@@ -52,7 +52,7 @@ module.exports.datastores = {
     // url: 'mysql://user:password@host:port/database',
 
     adapter: 'sails-postgresql',
-    url: process.env.DATABASE_URL,
+    url: process.env.HEROKU_POSTGRESQL_WHITE_URL,
     ssl: true, // Replace with your own connection URL
     schema: true,
     max: 1

@@ -59,7 +59,7 @@ module.exports = {
       //  ```
       //--------------------------------------------------------------------------
       adapter: "sails-postgresql",
-      url: process.env.DATABASE_URL,
+      url: process.env.HEROKU_POSTGRESQL_WHITE_URL,
       /****************************************************************************
       *                                                                           *
       * More adapter-specific options                                             *
