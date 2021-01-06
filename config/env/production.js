@@ -149,7 +149,8 @@ module.exports = {
     *                                                                          *
     ***************************************************************************/
     cors: {
-      allowOrigins: ["https://interview-project.herokuapp.com/"]
+      allowOrigins: "*",
+      allRoutes: true
     },
 
   },
