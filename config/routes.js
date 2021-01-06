@@ -21,7 +21,7 @@ module.exports.routes = {
 
   '/': { view: 'pages/homepage' },
   'POST /createorder': 'CreateOrderController.createOrder',
-  'POST /getorder': 'CreateOrderController.viewOrders',
+  'GET /getorders': 'CreateOrderController.viewOrders',
   'POST /editorder': 'CreateOrderController.editOrder',
   'POST /signup': {action: 'signup'},
   'POST /login': {action: 'login'},

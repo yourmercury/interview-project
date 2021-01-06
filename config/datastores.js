@@ -53,7 +53,7 @@ module.exports.datastores = {
 
     adapter: 'sails-postgresql',
     url: process.env.DATABASE_URL,
-    //ssl: true // Replace with your own connection URL
+    ssl: true // Replace with your own connection URL
 
   },
 

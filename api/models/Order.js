@@ -23,10 +23,11 @@ module.exports = {
       columnName: 'quantity'
     },
 
-    customerId: {
-      type: "number",
+    customerEmail: {
+      type: "string",
       required: true,
-      columnName: 'customer_id'
+      columnName: 'customer_id',
+      isEmail: true
     },
 
     id: {
@@ -51,10 +52,10 @@ module.exports = {
     return _.omit(this, ['createdAt', 'updatedAt']);
   },
 
-  getOrders: async function(id) {
+  getOrders: async function(user_email) {
     let orders = await this.find({
       where: {
-        customerId: id
+        customerEmail: user_email
       }
     });
 
@@ -67,10 +68,10 @@ module.exports = {
 
 
 
-  createOrder: async function (obj) {
+  createOrder: async function (obj, user_email) {
     //check first if the dish has already been ordered by the customer
     let order = await this.findOne({
-      where: { dish: obj.dish, customerId: obj.customerId }
+      where: { dish: obj.dish, customerEmail: user_email }
     });
 
     if (order) {
@@ -88,7 +89,7 @@ module.exports = {
     order = await this.create({
       dish: obj.dish,
       quantity: obj.quantity,
-      customerId: obj.customerId
+      customerEmail: user_email
     }).fetch()
 
     return order;

@@ -16,7 +16,7 @@ const checkCookie = function (req, res) {
     if (!status) {
         return false
     } else {
-        return true
+        return status
     }
 }
 
@@ -27,7 +27,7 @@ module.exports = {
             res.json({ error: "you are not logged in" });
         }
 
-        Order.createOrder(req.body)
+        Order.createOrder(req.body, status.sub)
             .then(order => {
                 res.status(200).json(order);
             }).catch(err => {
@@ -42,7 +42,7 @@ module.exports = {
         }
 
         //console.log(status)
-        Order.getOrders(req.body.id)
+        Order.getOrders(status.sub)
             .then(order => {
                 res.status(200).json(order);
             });

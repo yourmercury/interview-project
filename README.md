@@ -30,24 +30,22 @@ Note:  Generators are usually run using the globally-installed `sails` CLI (comm
 An ordering system for ordering dishes.. 
 
 ## APIs
-  ## /getorder :
-    this is a post endpoint that expects the following feilds
-    dish : food
+  ## GET /getorder :
+    this is an endpoint that expects the following feilds
     custormerId: got from your login
-    quantity: how many dishes you want
     
     it retrns all orders made by a customer
     
-   ## /createorder
-    this is a post endpoint that expects the following feilds
+   ## POST /createorder
+    this is an endpoint that expects the following feilds
     dish: food
     customerId: got from your login
     quantity: how many dishes
     
     it returns the order
     
-   ## /editorder
-    this is a post endpoint that expects the following feilds
+   ## POST /editorder
+    this is an endpoint that expects the following feilds
     dish: food
     id: the order id
     quantity: how many dishes
